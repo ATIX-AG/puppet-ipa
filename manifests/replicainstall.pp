@@ -180,7 +180,7 @@ class freeipa::replicainstall(
   if $upgrade {
 
     exec { "upgrade to replica ${hostname}":
-      command   => "/usr/sbin/ipa-replica-install ${f_princ} ${f_pw}",
+      command   => "/usr/sbin/ipa-replica-install ${f_princ} ${f_pw} --unattended",
       unless    => '/usr/sbin/ipactl status >/dev/null 2>&1',
       logoutput => 'on_failure',
       creates   => '/etc/ipa/.upgraded',
@@ -194,7 +194,7 @@ class freeipa::replicainstall(
 
   } else {
 
-    notify{"/usr/sbin/ipa-replica-install --hostname=${hostname} --server=${server} --realm=${realm} --domain=${domain} ${f_pw} ${f_princ} ${b_opts} ${f_opts} ${opts} --unattended":}
+    #    notify{"/usr/sbin/ipa-replica-install --hostname=${hostname} --server=${server} --realm=${realm} --domain=${domain} ${f_pw} ${f_princ} ${b_opts} ${f_opts} ${opts} --unattended":}
 
     exec { "replica install-${hostname}":
       command   => "/usr/sbin/ipa-replica-install --hostname=${hostname} --server=${server} --realm=${realm} --domain=${domain} ${f_pw} ${f_princ} ${b_opts} ${f_opts} ${opts} --unattended",

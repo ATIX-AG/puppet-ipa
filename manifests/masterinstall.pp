@@ -187,7 +187,7 @@ class freeipa::masterinstall(
   $f_opts = "${f_ip} ${f_idstart} ${f_idmax} ${f_ext_ca_type} ${f_ext_cert_file} ${f_dirsrv_cert_file} ${f_dirsrv_pin} ${dirsrv_cert_name} ${f_http_cert_file} ${f_http_pin} ${f_http_cert_name} ${f_ca_cert_file} ${f_subject} ${f_ca_algorithm} ${f_forward_policy} ${f_reverse_zone} ${f_zonemgr} ${f_forwarders}"
   $opts = join($options, " ")
 
-  notify{"/usr/sbin/ipa-server-install --hostname=${hostname} --realm=${realm} --domain=${domain} --admin-password='${adminpw}' --ds-password='${dmpw}' ${b_opts} ${f_opts} ${opts} --unattended":}
+  #  notify{"/usr/sbin/ipa-server-install --hostname=${hostname} --realm=${realm} --domain=${domain} --admin-password='${adminpw}' --ds-password='${dmpw}' ${b_opts} ${f_opts} ${opts} --unattended":}
 
   exec { "serverinstall-${hostname}":
     command   => "/usr/sbin/ipa-server-install --hostname=${hostname} --realm=${realm} --domain=${domain} --admin-password='${adminpw}' --ds-password='${dmpw}' ${b_opts} ${f_opts} ${opts} --unattended",

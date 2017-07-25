@@ -127,7 +127,7 @@ class freeipa::clientinstall(
   $optstring = join($options, ' ')
   $opts = "${optstring} ${f_keytab} ${f_ntp_server} ${f_nisdomain} ${f_ca_cert} ${f_ip} ${b_no_ssh} ${b_force} ${b_mkhomedir} ${b_no_ntp} ${b_no_ssh} ${b_no_sshd} ${b_fixed_primary} ${b_no_nisdomain} ${b_ssh_trust_dns} ${b_force_join} ${b_force_ntp} ${b_no_sudo} ${b_noac} ${b_request_cert} ${b_no_sssd}"
 
-  notify{"ipa-client-install --server=${server} --hostname=${hostname} --realm=${realm} --domain=${domain} ${f_princ} --password='${password}' ${opts} --unattended":}
+  #  notify{"ipa-client-install --server=${server} --hostname=${hostname} --realm=${realm} --domain=${domain} ${f_princ} --password='${password}' ${opts} --unattended":}
 
   exec { "client install-${hostname}":
     command   => "/usr/sbin/ipa-client-install --server=${server} --hostname=${hostname} --realm=${realm} --domain=${domain} ${f_princ} --password='${password}' ${opts} --unattended",
